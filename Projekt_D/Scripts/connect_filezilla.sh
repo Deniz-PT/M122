@@ -4,7 +4,7 @@ HOST="ftp.haraldmueller.ch"
 USERNAME="schoolerinvoices"
 PASSWORD="Berufsschule8005!"
 FTPDIR="/out/AP22d/Ugur"
-LOCALDIR="/home/deniz/m122/ebill/Server_Data"
+LOCALDIR="/home/deniz/m122/M122/Projekt_D/Server_Data"
 
 ftp -inv $HOST << FTPANWEIUNGEN
 quote USER $USERNAME
@@ -20,5 +20,5 @@ close
 
 FTPANWEIUNGEN
 
-cd /home/deniz/m122/ebill/Server_Data
-ls > /home/deniz/m122/ebill/File_Names/file_names.txt
+cd /home/deniz/m122/M122/Projekt_D/Server_Data
+ls > /home/deniz/m122/M122/Projekt_D/File_Names/file_names.txt

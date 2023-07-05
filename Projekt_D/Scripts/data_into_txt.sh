@@ -1,7 +1,7 @@
 #!/bin/bash
-Rechnungsnummer=$(cat /home/deniz/m122/ebill/File_Names/current_Rechnungsnummer.txt)
-Kundennummer=$(cat /home/deniz/m122/ebill/File_Names/current_Kundennummer.txt)
-FilePath="/home/deniz/m122/ebill/Output_Files/${Rechnungsnummer}_${Kundennummer}_invoice.txt"
+Rechnungsnummer=$(cat /home/deniz/m122/M122/Projekt_D/File_Names/current_Rechnungsnummer.txt)
+Kundennummer=$(cat /home/deniz/m122/M122/Projekt_D/File_Names/current_Kundennummer.txt)
+FilePath="/home/deniz/m122/M122/Projekt_D/Output_Files/${Rechnungsnummer}_${Kundennummer}_invoice.txt"
 spaces="                                                " #48
 spaces2="                       " #23
 spaces3="                                          " #42
@@ -12,14 +12,14 @@ spaces7="                           " #27
 
 echo "-------------------------------------------------" > $FilePath #Line 1
 echo -e "\n\n" >> $FilePath #Line 2, 3, 4
-cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Herkunft | cut -d';' -f4 >> $FilePath #Line 5
-cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Herkunft | cut -d';' -f6 >> $FilePath #Line 6
+cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Herkunft | cut -d';' -f4 >> $FilePath #Line 5
+cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Herkunft | cut -d';' -f6 >> $FilePath #Line 6
 echo "" >> $FilePath #Line 7
-cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Herkunft | cut -d';' -f7 >> $FilePath #Line 8
+cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Herkunft | cut -d';' -f7 >> $FilePath #Line 8
 echo -e "\n\n\n" >> $FilePath #Line 9, 10, 11, 12
 
 # text, that comes beore the spaces
-lines_before_spaces=$(echo -n $(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Rechnung_ | cut -d';' -f3)", den "$(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Rechnung_ | cut -d';' -f4))
+lines_before_spaces=$(echo -n $(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Rechnung_ | cut -d';' -f3)", den "$(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Rechnung_ | cut -d';' -f4))
 
 #count number of caracters before the spaces
 num_chars=$(echo -n $lines_before_spaces | wc -m)
@@ -28,14 +28,14 @@ remaining_spaces=$(( ${#spaces} - $num_chars ))
 
 # print the whole line
 printf "%s%${remaining_spaces}s" "$lines_before_spaces" >> $FilePath
-echo $(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Endkunde | cut -d';' -f3) >> $FilePath #Line 13
+echo $(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Endkunde | cut -d';' -f3) >> $FilePath #Line 13
 
 
 printf "%${remaining_spaces}s" "$spaces" >> $FilePath
-echo $(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Endkunde | cut -d';' -f4) >> $FilePath #Line 14
+echo $(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Endkunde | cut -d';' -f4) >> $FilePath #Line 14
 
 printf "%${remaining_spaces}s" "$spaces" >> $FilePath
-echo $(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Endkunde | cut -d';' -f5) >> $FilePath #Line 15
+echo $(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Endkunde | cut -d';' -f5) >> $FilePath #Line 15
 
 echo "" >> $FilePath #Line 16
 
@@ -54,14 +54,14 @@ echo $Kundennummer >> $FilePath #Line 17
 # text, that comes beore the spaces
 lines_before_spaces="Auftragsnummer:"
 #count number of caracters before the spaces
-num_chars=$(echo -n $lines_before_spaces $(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Rechnung_ | cut -d';' -f2 | cut -d'_' -f2) | wc -m)
+num_chars=$(echo -n $lines_before_spaces $(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Rechnung_ | cut -d';' -f2 | cut -d'_' -f2) | wc -m)
 #count the left spaces, that we have to print
 remaining_spaces=$(( ${#spaces2} - $num_chars ))
 
 
 # print the whole line
 printf "%s%${remaining_spaces}s" "$lines_before_spaces" >> $FilePath
-echo $(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Rechnung_ | cut -d';' -f2 | cut -d'_' -f2) >> $FilePath #Line 18
+echo $(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Rechnung_ | cut -d';' -f2 | cut -d'_' -f2) >> $FilePath #Line 18
 
 echo "" >> $FilePath #Line 19
 
@@ -110,7 +110,7 @@ while read line; do
         printf "%${remaining_spaces4}s%s" "" "$RechnPosTot" >> $FilePath
         echo "" >> $FilePath
     fi
-done < /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data
+done < /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data
 
 echo "                                                            -----------" >> $FilePath
 echo -n "                                                Total CHF" >> $FilePath
@@ -121,7 +121,7 @@ printf "%${remaining_spaces5}s%s" "" "$Total" >> $FilePath
 
 echo -e "\n\n\n" >> $FilePath
 
-Tage=$(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Rechnung_ | cut -d';' -f6 | cut -d'_' -f2)
+Tage=$(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Rechnung_ | cut -d';' -f6 | cut -d'_' -f2)
 
 today=$(date +%d-%m-%Y)
 
@@ -147,7 +147,7 @@ echo "Zahlteil" >> $FilePath
 echo -e "\n" >> $FilePath
 
 # text, that comes beore the spaces
-lines_before_spaces=$(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Herkunft | cut -d';' -f4)
+lines_before_spaces=$(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Herkunft | cut -d';' -f4)
 #count number of caracters before the spaces
 num_chars=$(echo -n $lines_before_spaces | wc -m)
 #count the left spaces, that we have to print
@@ -161,7 +161,7 @@ echo "------------------------""  "${lines_before_spaces} >> "$FilePath"
 
 
 # text, that comes beore the spaces
-lines_before_spaces=$(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Herkunft | cut -d';' -f5)
+lines_before_spaces=$(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Herkunft | cut -d';' -f5)
 #count number of caracters before the spaces
 num_chars=$(echo -n $lines_before_spaces | wc -m)
 #count the left spaces, that we have to print
@@ -175,7 +175,7 @@ echo "|  QR-CODE             |""  "${lines_before_spaces} >> "$FilePath"
 
 
 # text, that comes beore the spaces
-lines_before_spaces=$(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Herkunft | cut -d';' -f6)
+lines_before_spaces=$(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Herkunft | cut -d';' -f6)
 #count number of caracters before the spaces
 num_chars=$(echo -n $lines_before_spaces | wc -m)
 #count the left spaces, that we have to print
@@ -197,7 +197,7 @@ echo "00 00000 00000 00000 00000 |                      |  00 00000 00000 00000 
 echo "                           |                      |  " >> "$FilePath"
 
 # text, that comes beore the spaces
-lines_before_spaces=$(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Endkunde | cut -d';' -f3)
+lines_before_spaces=$(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Endkunde | cut -d';' -f3)
 #count number of caracters before the spaces
 num_chars=$(echo -n $lines_before_spaces | wc -m)
 #count the left spaces, that we have to print
@@ -211,7 +211,7 @@ echo "|                      |""  "${lines_before_spaces} >> "$FilePath"
 
 
 # text, that comes beore the spaces
-lines_before_spaces=$(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Endkunde | cut -d';' -f4)
+lines_before_spaces=$(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Endkunde | cut -d';' -f4)
 #count number of caracters before the spaces
 num_chars=$(echo -n $lines_before_spaces | wc -m)
 #count the left spaces, that we have to print
@@ -225,7 +225,7 @@ echo "|                      |""  "${lines_before_spaces} >> "$FilePath"
 
 
 # text, that comes beore the spaces
-lines_before_spaces=$(cat /home/deniz/m122/ebill/Server_Data/rechnung${Rechnungsnummer}.data | grep Endkunde | cut -d';' -f5)
+lines_before_spaces=$(cat /home/deniz/m122/M122/Projekt_D/Server_Data/rechnung${Rechnungsnummer}.data | grep Endkunde | cut -d';' -f5)
 #count number of caracters before the spaces
 num_chars=$(echo -n $lines_before_spaces | wc -m)
 #count the left spaces, that we have to print

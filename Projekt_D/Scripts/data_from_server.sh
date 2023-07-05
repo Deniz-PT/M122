@@ -5,7 +5,7 @@ USERNAME="zahlungssystem"
 PASSWORD="Berufsschule8005!"
 FTPDIRIN="/in/AP22dUgur"
 FTPDIROUT="/out/AP22dUgur"
-LOCALDIR="/home/deniz/m122/ebill/Output_Files"
+LOCALDIR="/home/deniz/m122/M122/Projekt_D/Output_Files"
 
 cd $LOCALDIR
 
