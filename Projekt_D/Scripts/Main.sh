@@ -15,7 +15,7 @@ do
     echo "Moving $file to rejected directory"
 
     email=$(cat $file | grep "Herkunft" | cut -d ';' -f8)
-    email="linustimo.daniels@gmail.com"
+    email="deniz.ugur@edu.tbz.ch"
 
     echo "Dieses File ist ungültig, überprüfe den Inhalt!!" | mailx -A "$file" -s "file rejected" "$email"
 
@@ -62,9 +62,9 @@ do
   tar -czvf "${file_name}_archive.tar.gz" *
 
   email=$(cat "/home/deniz/m122/M122/Projekt_D/Server_Data/rechnung$Rechnungsnummer.data" | grep "Herkunft" | cut -d ';' -f8)
-  email="linustimo.daniels@gmail.com"
+  email="deniz.ugur@edu.tbz.ch"
 
-echo -e "Sehr geehrte:r ${Name},\n\nam ${Date} wurde die erfolgreiche Bearbeitung\nder Rechnung ${Rechnungsnummer} im Zahlungssystem coinditorei.com gemeldet.\n\nIn der Beilage finden Sie die Dateien in komprimierter Form.\n\nMit freundlichen Grüßen,\nLinus Daniels" | mailx -A $file_name"_archive.tar.gz" -s "Quittung" "$email"
+echo -e "Sehr geehrte:r ${Name},\n\nam ${Date} wurde die erfolgreiche Bearbeitung\nder Rechnung ${Rechnungsnummer} im Zahlungssystem coinditorei.com gemeldet.\n\nIn der Beilage finden Sie die Dateien in komprimierter Form.\n\nMit freundlichen Grüßen,\n Deniz Ugur" | mailx -A $file_name"_archive.tar.gz" -s "Quittung" "$email"
 
   mv "${file_name}_archive.tar.gz" "/home/deniz/m122/M122/Projekt_D/Archiv"
 
