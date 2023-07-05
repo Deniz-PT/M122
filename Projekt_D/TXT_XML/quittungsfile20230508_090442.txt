@@ -1,0 +1,2 @@
+20230508-090442  90448_K234_invoice.xml verarbeitet -- 
+20230508-090442  90448_K234_invoice.txt verarbeitet -- HaraldMüller;8610Uster;CHE-111.222.333MWST;Kundennummer:K234;RechnungNr90448;TotalCHF25.00;ZahlungszielohneAbzug10Tage(07-06-2023)
